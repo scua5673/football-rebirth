@@ -442,7 +442,7 @@ const $ = id => document.getElementById(id);
 function pickWeighted(items, w){ let t=0; for(const it of items) t+=w(it); let r=Math.random()*t; for(const it of items){ r-=w(it); if(r<=0) return it;} return items[items.length-1]; }
 function gauss(){ let u=0,v=0; while(!u)u=Math.random(); while(!v)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
 function fmtPct(p){ if(p>=0.01) return (p*100).toFixed(2)+"%"; if(p>=0.0001) return (p*100).toFixed(4)+"%"; return (p*100).toExponential(1).replace("e-","×10⁻")+"%"; }
-function fmtOne(p){ const n=Math.round(1/p); return "약 "+n.toLocaleString("ko-KR")+"명 중 1명"; }
+function fmtOne(p){ if(p>=0.1) return "10명 중 "+Math.round(p*10)+"명"; const n=Math.round(1/p); return "약 "+n.toLocaleString("ko-KR")+"명 중 1명"; }
 function fmtPeople(n){ if(n>=1e8) return (n/1e8).toFixed(2).replace(/\.?0+$/,"")+"억명"; if(n>=1e4) return Math.round(n/1e4).toLocaleString("ko-KR")+"만명"; return n.toLocaleString("ko-KR")+"명"; }
 
 // ---------- 상태 ----------
@@ -547,7 +547,7 @@ renderRecent();
 let last=null;
 function openCard(r){
   const [cname,flag,ck,cline,cups]=r.c;
-  const oneIn = Math.round(1/r.prob).toLocaleString("ko-KR");
+  const oneIn = fmtOne(r.prob);
   $("card").innerHTML = `
     <div class="brand"><span>⚽ <b>축구선수로 다시 태어나기</b></span><span class="num">LIFE #${state.count}</span></div>
     <div class="hero"><div class="flag">${flag}</div><div><div class="k">${cname} 출생 · ${r.p[1]}</div><div class="n">«${r.nick}»</div></div></div>
@@ -563,7 +563,7 @@ function openCard(r){
       </ul></div>
     <p class="cstory">${r.story}<br><span class="rec">${r.rec}</span></p>
     <p class="cpeer">같은 해 동기 ${r.peer.c[1]} ${r.peer.c[0]} ${r.peer.p[1]} → <b>${r.peer.t[0]}</b><br>${r.peerNote}</p>
-    <div class="odds"><span>이 삶으로 태어날 확률<br>${oneIn}명 중 1명</span><span class="num">${fmtPct(r.prob)}</span></div>
+    <div class="odds"><span>이 삶으로 태어날 확률<br>${oneIn}</span><span class="num">${fmtPct(r.prob)}</span></div>
     <div class="cfoot"><b>${cname}</b> 축구 인구 약 ${fmtPeople(ck*1000)} · 세계의 ${(r.cprob*100).toFixed(1)}%${cups?` · 월드컵 우승 ${cups}회`:""}<br>${mode==="pro"?"프로 선수 11.3만 명 기준":"축구 인구 2.65억 명 기준"} · FIFA Big Count 근사치</div>
     <div class="hint" id="hint">화면을 캡처하세요 · 아무 곳이나 탭하면 닫혀요</div>`;
   $("card").classList.toggle("rare", r.t[2]>=6);
