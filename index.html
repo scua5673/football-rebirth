@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1F5C35"><meta property="og:title" content="축구선수로 다시 태어나기"><meta property="og:description" content="지구에서 공을 차는 2억 6천만 명 중 한 명으로 다시 태어납니다. 대부분은 조기축구로 끝납니다."></head>
+<body>
+<title>축구선수로 다시 태어나기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#F2F5EC; --card:#FFFFFF; --ink:#15211A; --mute:#66756B; --line:#DDE4D8;
+  --pitch:#2F7F48; --pitch-line:rgba(255,255,255,.85); --pitch-dark:#276C3D;
+  --gold:#D9A21B; --gold-ink:#5C4200; --gold-soft:#FBF1D2;
+  --chip:#E9EEE3; --btn:#15211A; --btn-ink:#F2F5EC;
+  --sh:0 1px 2px rgba(21,33,26,.06),0 8px 24px rgba(21,33,26,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1511; --card:#182119; --ink:#E8EEE6; --mute:#8E9E92; --line:#26312A;
+    --pitch:#245E37; --pitch-line:rgba(255,255,255,.7); --pitch-dark:#1E4F2E;
+    --gold:#E4B43A; --gold-ink:#FFE6A3; --gold-soft:#3A2E0F;
+    --chip:#232E26; --btn:#E8EEE6; --btn-ink:#0E1511;
+    --sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1511; --card:#182119; --ink:#E8EEE6; --mute:#8E9E92; --line:#26312A;
+  --pitch:#245E37; --pitch-line:rgba(255,255,255,.7); --pitch-dark:#1E4F2E;
+  --gold:#E4B43A; --gold-ink:#FFE6A3; --gold-soft:#3A2E0F;
+  --chip:#232E26; --btn:#E8EEE6; --btn-ink:#0E1511;
+  --sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 64px}
+.num{font-family:"Bebas Neue","Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;margin-bottom:10px}
+h1{margin:0;font-size:30px;font-weight:900;line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+h1 span{color:var(--gold)}
+.sub{margin:6px 0 0;color:var(--mute);font-size:14px;max-width:46ch}
+.seg{display:inline-flex;background:var(--chip);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mute);font:inherit;font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--sh)}
+.seg button:focus-visible,.go:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 16px}
+.stat{background:var(--card);border-radius:14px;padding:12px 14px 10px;box-shadow:var(--sh);min-width:0}
+.stat .eyebrow{margin-bottom:2px}
+.stat .v{font-size:30px;line-height:1;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat .v.small{font-family:inherit;font-weight:900;font-size:18px;line-height:1.25;white-space:normal;letter-spacing:-.01em}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+.life{background:var(--card);border-radius:20px;box-shadow:var(--sh);overflow:hidden;display:grid;grid-template-columns:220px 1fr}
+@media (max-width:620px){.life{grid-template-columns:1fr}}
+.pitchbox{background:var(--pitch);padding:16px 14px;display:flex;align-items:center;justify-content:center;position:relative}
+.pitchbox svg{width:100%;max-width:190px;height:auto;display:block}
+@media (max-width:620px){.pitchbox svg{max-width:150px}}
+.ghost{fill:rgba(255,255,255,.28)}
+.me{fill:var(--gold);stroke:#fff;stroke-width:2}
+.me.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{r:9}50%{r:11}}
+.side{padding:22px 24px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.where{font-size:13px;color:var(--mute)}
+.tier{margin:0;font-size:34px;line-height:1.1;font-weight:900;letter-spacing:-.025em;text-wrap:balance}
+.tier.gold{color:var(--gold)}
+.lead{margin:0;font-size:15px}
+.facts{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px}
+@media (max-width:400px){.facts{grid-template-columns:1fr}}
+.facts li{border-top:1px solid var(--line);padding-top:8px;min-width:0}
+.facts .k{display:block;font-size:11px;color:var(--mute);letter-spacing:.06em}
+.facts .d{font-weight:700;font-size:15px}
+.facts .d .num{font-size:22px;line-height:1;vertical-align:-1px;margin-right:2px}
+.story{margin:0;padding:12px 14px;background:var(--gold-soft);color:var(--gold-ink);border-radius:12px;font-size:14px;line-height:1.5}
+.country{margin:0;padding:0;list-style:none;font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:3px}
+.empty{color:var(--mute);font-size:14px;margin:0}
+.empty b{color:var(--ink)}
+
+.go{margin:18px 0 0;width:100%;border:0;border-radius:16px;padding:18px 20px;background:var(--btn);color:var(--btn-ink);font:inherit;font-size:17px;font-weight:900;letter-spacing:-.01em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .08s ease}
+.go:active{transform:scale(.99)}
+.go .num{font-size:22px;color:var(--gold);letter-spacing:.06em}
+.go[disabled]{opacity:.7;cursor:default}
+
+section.rec{margin-top:26px}
+.rec h2{font-size:13px;margin:0 0 10px;font-weight:700;letter-spacing:.1em;color:var(--mute);display:flex;justify-content:space-between;align-items:baseline}
+.rec h2 .num{font-size:18px;color:var(--ink)}
+.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;background:var(--card);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
+.list li{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);font-size:14px}
+.list li:first-child{border-top:0}
+.list .flag{font-size:20px;line-height:1}
+.list .pos{color:var(--mute);font-size:12px;margin-left:6px}
+.chip{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--mute);white-space:nowrap}
+.chip.t4,.chip.t5,.chip.t6{background:var(--gold-soft);color:var(--gold-ink)}
+.chip.t7,.chip.t8{background:var(--gold);color:#1a1200}
+.best{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding:12px 14px;border:1px dashed var(--line);border-radius:12px;font-size:13px;color:var(--mute)}
+.best b{color:var(--ink)}
+.best button{border:0;background:transparent;color:var(--mute);font:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
+
+footer{margin-top:28px;color:var(--mute);font-size:12px;line-height:1.6}
+footer p{margin:0 0 6px;max-width:70ch}
+footer a{color:inherit}
+
+/* ---------- 공유 카드 ---------- */
+.share{position:fixed;inset:0;z-index:50;background:rgba(6,12,8,.72);display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.share.open{display:flex}
+.card{--g1:#1F5C35;--g2:#1A4F2D;--cg:#F2C64B;--cm:rgba(255,255,255,.62);position:relative;width:100%;height:100dvh;overflow:auto;color:#fff;
+  background:repeating-linear-gradient(180deg,var(--g1) 0 12.5%,var(--g2) 12.5% 25%);
+  padding:calc(env(safe-area-inset-top,0px) + 18px) 22px calc(env(safe-area-inset-bottom,0px) + 18px);
+  display:flex;flex-direction:column;gap:clamp(6px,1.2dvh,14px);font-family:"Noto Sans KR",-apple-system,system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+@media (min-width:640px){.card{width:390px;height:min(820px,94vh);border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.5)}}
+.card .brand{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--cm);letter-spacing:.02em}
+.card .brand b{color:#fff;font-weight:700}
+.card .brand .num{font-size:16px;color:var(--cg);letter-spacing:.08em}
+.card .hero{display:flex;align-items:center;gap:12px;margin-top:clamp(0px,.6dvh,8px)}
+.card .flag{font-size:clamp(44px,8dvh,60px);line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.card .hero .k{font-size:12px;color:var(--cm);letter-spacing:.06em}
+.card .hero .n{font-size:clamp(22px,3.4dvh,28px);font-weight:900;line-height:1.15;letter-spacing:-.02em}
+.card .ctier{margin:0;font-size:clamp(30px,5.2dvh,42px);line-height:1.05;font-weight:900;letter-spacing:-.03em;color:var(--cg);text-wrap:balance}
+.card .ctier small{display:block;font-size:12px;font-weight:500;color:var(--cm);letter-spacing:.04em;margin-bottom:6px}
+.card .row{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:stretch}
+.card .row svg{width:104px;height:auto;display:block;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.card .cf{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;align-content:center}
+.card .cf li{border-top:1px solid rgba(255,255,255,.22);padding-top:6px;min-width:0}
+.card .cf .k{display:block;font-size:10.5px;color:var(--cm);letter-spacing:.08em}
+.card .cf .d{font-weight:700;font-size:15px;white-space:nowrap}
+.card .cf .d .num{font-size:22px;line-height:1;vertical-align:-1px;margin-right:1px;color:#fff}
+.card .cstory{margin:0;padding:12px 14px;background:rgba(0,0,0,.28);border-left:3px solid var(--cg);border-radius:10px;font-size:clamp(13px,1.9dvh,15px);line-height:1.5}
+.card .odds{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(255,255,255,.22);padding-top:10px;font-size:12px;color:var(--cm)}
+.card .odds .num{font-size:clamp(26px,4dvh,34px);color:#fff;line-height:1}
+.card .cfoot{margin-top:auto;font-size:11px;line-height:1.5;color:var(--cm)}
+.card .cfoot b{color:#fff;font-weight:700}
+.card .hint{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:opacity .5s;pointer-events:none}
+.card .hint.gone{opacity:0}
+.again{margin-top:10px;width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer;display:none}
+.again.show{display:block}
+
+.facts .d{white-space:normal;line-height:1.3}
+.story .rec{display:block;margin-top:6px;font-size:12px;opacity:.8}
+.peer{margin:0;font-size:13px;color:var(--mute);border-left:2px solid var(--line);padding-left:10px}
+.peer b{color:var(--ink)}
+.card .cf{grid-template-columns:1fr 1fr}
+.card .cf .d{white-space:normal;font-size:13px;line-height:1.3}
+.card .cstory .rec{display:block;margin-top:5px;font-size:11.5px;opacity:.8}
+.card .cpeer{margin:0;font-size:12px;color:var(--cm);line-height:1.45;border-left:2px solid rgba(255,255,255,.3);padding-left:10px}
+.card .cpeer b{color:#fff}
+.card.rare{box-shadow:0 0 0 3px var(--cg),0 0 46px rgba(242,198,75,.55)}
+.card.rare::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.18) 45%,rgba(255,215,120,.25) 50%,rgba(255,255,255,.18) 55%,transparent 70%);background-size:250% 100%;animation:sheen 2.8s linear infinite;border-radius:inherit}
+@keyframes sheen{from{background-position:120% 0}to{background-position:-120% 0}}
+@media (prefers-reduced-motion: reduce){.me.pulse{animation:none}.go{transition:none}.card.rare::after{animation:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>⚽ 축구선수로 <span>다시</span> 태어나기</h1>
+      <p class="sub" id="sub">지구에서 공을 차는 사람 2억 6천만 명 중 한 명으로 무작위로 다시 태어납니다.</p>
+    </div>
+    <div class="seg" role="group" aria-label="뽑는 기준">
+      <button type="button" id="modeAll" aria-pressed="true">축구 인구 기준</button>
+      <button type="button" id="modePro" aria-pressed="false">프로 선수 기준</button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="eyebrow" id="poolLabel">축구 인구</div><div class="v num" id="poolV">2.65억명</div></div>
+    <div class="stat"><div class="eyebrow">이번 생</div><div class="v small" id="tierV">?</div></div>
+    <div class="stat"><div class="eyebrow">도달 확률</div><div class="v num" id="probV">—</div></div>
+    <div class="stat"><div class="eyebrow">환생 횟수</div><div class="v num" id="countV">0</div></div>
+  </div>
+
+  <div class="life" id="life">
+    <div class="pitchbox" aria-hidden="true">
+      <svg viewBox="0 0 200 300" id="pitch">
+        <rect x="0" y="0" width="200" height="300" fill="var(--pitch)"/>
+        <g fill="var(--pitch-dark)"><rect x="0" y="0" width="200" height="37.5"/><rect x="0" y="75" width="200" height="37.5"/><rect x="0" y="150" width="200" height="37.5"/><rect x="0" y="225" width="200" height="37.5"/></g>
+        <g fill="none" stroke="var(--pitch-line)" stroke-width="1.5">
+          <rect x="8" y="8" width="184" height="284"/>
+          <line x1="8" y1="150" x2="192" y2="150"/>
+          <circle cx="100" cy="150" r="24"/>
+          <rect x="46" y="8" width="108" height="46"/><rect x="76" y="8" width="48" height="16"/>
+          <rect x="46" y="246" width="108" height="46"/><rect x="76" y="276" width="48" height="16"/>
+          <path d="M72 246 A28 28 0 0 1 128 246"/><path d="M72 54 A28 28 0 0 0 128 54"/>
+        </g>
+        <circle cx="100" cy="150" r="2" fill="var(--pitch-line)"/>
+        <g id="dots"></g>
+      </svg>
+    </div>
+    <div class="side" id="side">
+      <p class="empty">아래 버튼을 누르면 국적·포지션·주발·키와 함께 <b>이번 생에 어디까지 올라가는지</b>가 정해집니다. 대부분은 동네 축구로 끝납니다. 원래 그렇습니다.</p>
+    </div>
+  </div>
+
+  <button class="go" id="go" type="button"><span class="num">KICK OFF</span> 랜덤으로 다시 태어나기</button>
+  <button class="again" id="again" type="button">📱 방금 뽑은 생, 카드로 다시 보기</button>
+
+  <section class="rec">
+    <h2>최근 환생 <span class="num" id="recN"></span></h2>
+    <ul class="list" id="recent"><li><span></span><span class="empty">아직 없음</span><span></span></li></ul>
+    <div class="best"><span>이 기기 최고 기록: <b id="bestV">없음</b></span><button type="button" id="reset">기록 지우기</button></div>
+  </section>
+
+  <footer>
+    <p>축구 인구(국가별 비중)는 FIFA Big Count(2006)의 «전체 플레이어 수»를, 프로 선수 수(약 11만 3천 명)와 각 도달 단계의 인원은 같은 조사와 리그·대표팀 규모에서 자릿수 수준으로 어림한 값입니다. 정확한 통계가 아니라 «대략 이 정도로 드물다»를 느끼기 위한 장난감입니다. 국적은 140여 개 나라 안에서만 뽑히며(목록에 없는 나라 몫은 비례 배분), 국가별 프로 배출률 차이는 반영하지 않았습니다.</p>
+    <p>원작 아이디어: <a href="https://oters1117-art.github.io/RandomReincarnation/" target="_blank" rel="noopener">랜덤 다시 태어나기</a> (둘기마요)</p>
+  </footer>
+</div>
+<div class="share" id="share" role="dialog" aria-modal="true" aria-label="결과 카드"><div class="card" id="card"></div></div>
+
+<script>
+// ---------- 데이터 ----------
+// [이름, 국기, 축구 인구(천 명), 한 줄, 월드컵 우승]
+const COUNTRIES = [
+  ["중국","🇨🇳",26166,"축구 인구는 세계 1위인데 월드컵 본선은 2002년 딱 한 번. 학교 운동장에서 시작하는 게 보통입니다.",0],
+  ["미국","🇺🇸",24472,"유소년 축구는 부모 차로 실어 나르는 «사커 맘» 문화. 대학 스포츠 장학금이 진로의 큰 갈림길입니다.",0],
+  ["인도","🇮🇳",20588,"크리켓의 나라지만 콜카타와 케랄라, 고아에서는 축구가 종교에 가깝습니다.",0],
+  ["독일","🇩🇪",16309,"등록 선수만 700만 명, 동네마다 페어라인(클럽)이 있습니다. 6살이면 이미 리그 경기를 뜁니다.",4],
+  ["브라질","🇧🇷",13198,"맨발로 시작해 풋살장에서 기술을 익힙니다. 월드컵 5회 우승, 유일한 «펜타».",5],
+  ["멕시코","🇲🇽",8480,"아즈테카 스타디움 10만 관중 앞에서 뛰는 게 모든 아이의 꿈입니다.",0],
+  ["인도네시아","🇮🇩",7094,"세계에서 가장 열광적인 관중 문화 중 하나. 리그는 어수선해도 사랑은 진심입니다.",0],
+  ["나이지리아","🇳🇬",6654,"«슈퍼 이글스». 올림픽 금메달(1996)과 유럽 빅리그로 수출된 수많은 스트라이커의 나라.",0],
+  ["방글라데시","🇧🇩",6280,"크리켓 그늘에 가려 있지만 축구 인구는 세계 10위권. 다카 골목마다 공이 굴러갑니다.",0],
+  ["러시아","🇷🇺",5803,"긴 겨울 때문에 실내 훈련이 길고, 겨울에는 리그가 석 달 쉽니다.",0],
+  ["이탈리아","🇮🇹",4980,"카테나치오의 나라. 어릴 때부터 수비 위치 선정을 전술 수업처럼 배웁니다.",4],
+  ["일본","🇯🇵",4805,"고교 선수권 결승이 국립경기장을 채웁니다. 학교 부활동과 클럽 유스가 나란히 있는 구조.",0],
+  ["남아프리카공화국","🇿🇦",4540,"2010년 아프리카 최초 월드컵 개최국. 부부젤라 소리를 기억하시죠.",0],
+  ["프랑스","🇫🇷",4190,"클레르퐁텐 아카데미와 파리 교외 시테에서 세계 최고의 인재가 쏟아집니다.",2],
+  ["잉글랜드","🏴󠁧󠁢󠁥󠁮󠁧󠁿",4164,"축구의 고향. 프리미어리그 아카데미에 들어가는 아이 중 프로가 되는 비율은 1%도 안 됩니다.",1],
+  ["이란","🇮🇷",3800,"아시아 최다 월드컵 본선 진출 경쟁국. 아자디 스타디움의 함성은 아시아 최고 수준입니다.",0],
+  ["베트남","🇻🇳",3500,"박항서 감독 시절부터 축구 열기가 폭발했습니다. 동남아 정상권.",0],
+  ["콜롬비아","🇨🇴",3043,"발데라마의 머리, 하메스의 왼발. 리듬이 몸에 밴 축구를 합니다.",0],
+  ["파키스탄","🇵🇰",2975,"시알코트에서 전 세계 축구공의 상당수를 만듭니다. 정작 대표팀은 세계 최하위권.",0],
+  ["스페인","🇪🇸",2834,"라 마시아식 론도(패스 돌리기)를 유치원 때부터 합니다. 2010년 월드컵 우승.",1],
+  ["캐나다","🇨🇦",2700,"2026년 월드컵 공동 개최국. 아이스하키 다음이 축구인 나라.",0],
+  ["튀르키예","🇹🇷",2700,"갈라타사라이-페네르바체 더비의 열기는 유럽에서도 손꼽힙니다.",0],
+  ["아르헨티나","🇦🇷",2658,"마라도나와 메시의 나라. 포트레로(공터)에서 배우는 «피카르디아»가 축구의 기본입니다.",3],
+  ["이집트","🇪🇬",2500,"살라의 나라. 알 아흘리는 아프리카 최다 우승 클럽입니다.",0],
+  ["태국","🇹🇭",2500,"동남아에서 리그 인프라가 가장 잘 갖춰진 나라 중 하나.",0],
+  ["우크라이나","🇺🇦",2300,"셰브첸코의 나라. 디나모 키이우 아카데미는 옛 소련 시절부터 명문.",0],
+  ["폴란드","🇵🇱",2000,"레반도프스키 이후 스트라이커 지망생이 크게 늘었습니다.",0],
+  ["에티오피아","🇪🇹",1800,"고지대에서 자라 지구력이 남다릅니다. 육상만큼 축구도 사랑합니다.",0],
+  ["네덜란드","🇳🇱",1739,"아약스식 토탈 풋볼. 유소년 단계에서 모든 포지션을 돌아가며 뜁니다.",0],
+  ["콩고민주공화국","🇨🇩",1600,"«레오파즈». 유럽 빅리그 곳곳에 콩고 혈통 선수들이 있습니다.",0],
+  ["알제리","🇩🇿",1500,"프랑스 리그와 인재를 주고받는 북아프리카 강호.",0],
+  ["가나","🇬🇭",1300,"«블랙 스타즈». U-17·U-20 세계 정상을 여러 번 밟은 유소년 강국.",0],
+  ["대한민국","🇰🇷",1195,"2002년 4강의 나라. 학원 축구와 클럽 유스가 공존하고, 조기축구회가 전국에 있습니다.",0],
+  ["모로코","🇲🇦",1200,"2022년 아프리카 최초 월드컵 4강. 모하메드 6세 아카데미가 인재를 키웁니다.",0],
+  ["페루","🇵🇪",1200,"안데스 고지대 원정은 어느 팀에게나 악몽입니다.",0],
+  ["탄자니아","🇹🇿",1200,"심바 SC와 영 아프리칸스의 다르에스살람 더비가 도시를 멈춥니다.",0],
+  ["케냐","🇰🇪",1100,"장거리 육상의 나라지만 나이로비 골목 축구도 뜨겁습니다.",0],
+  ["카메룬","🇨🇲",1100,"«불굴의 사자들». 1990년 월드컵 8강으로 아프리카 축구를 세계에 알렸습니다.",0],
+  ["스웨덴","🇸🇪",1000,"즐라탄의 나라. 겨울엔 실내 풋살, 여름엔 백야 아래서 훈련합니다.",0],
+  ["호주","🇦🇺",970,"럭비·크리켓·호주식 풋볼과 경쟁하지만 유소년 등록은 축구가 1위입니다.",0],
+  ["코트디부아르","🇨🇮",900,"드록바와 투레 형제. 아프리카 네이션스컵 3회 우승.",0],
+  ["베네수엘라","🇻🇪",900,"남미에서 유일하게 월드컵 본선에 못 나간 나라. 야구가 더 인기입니다.",0],
+  ["벨기에","🇧🇪",800,"«황금 세대» 이후 유소년 시스템 개혁의 모범 사례로 꼽힙니다.",0],
+  ["사우디아라비아","🇸🇦",800,"2034년 월드컵 개최 예정. 최근 리그에 세계적 스타들이 몰려듭니다.",0],
+  ["칠레","🇨🇱",800,"코파 아메리카 2연패(2015·2016). 비엘사식 압박 축구의 유산.",0],
+  ["필리핀","🇵🇭",800,"농구의 나라지만 여자 대표팀이 2023년 월드컵 본선에 올랐습니다.",0],
+  ["세네갈","🇸🇳",600,"2002년 월드컵 개막전에서 프랑스를 꺾은 그 나라. 마네의 고향.",0],
+  ["포르투갈","🇵🇹",550,"호날두와 피구의 나라. 인구 대비 유럽 최고 수준의 선수 배출률.",0],
+  ["크로아티아","🇭🇷",300,"인구 400만에 월드컵 준우승(2018)·3위(1998·2022). 모드리치의 나라.",0],
+  ["우루과이","🇺🇾",250,"인구 350만에 월드컵 2회 우승. «가라(garra)», 물러서지 않는 기질.",2],
+  ["말레이시아","🇲🇾",1200,"1970년대 아시아 강호였고, 지금은 리그 관중 열기가 다시 살아나는 중입니다.",0],
+  ["우간다","🇺🇬",1300,"«크레인스». 캄팔라 학교 대항전이 축구 인생의 출발점입니다.",0],
+  ["수단","🇸🇩",1200,"1957년 첫 아프리카 네이션스컵을 치른 세 나라 중 하나.",0],
+  ["이라크","🇮🇶",1000,"2007년 아시안컵 우승. 전쟁 중에도 축구는 멈추지 않았습니다.",0],
+  ["미얀마","🇲🇲",1000,"1960년대 아시아 정상권이었던 옛 버마. 지금은 재건 중입니다.",0],
+  ["루마니아","🇷🇴",900,"하지의 나라. 1994년 월드컵 8강이 황금기였습니다.",0],
+  ["앙골라","🇦🇴",800,"2006년 월드컵 첫 본선. 루안다 해변 축구가 일상입니다.",0],
+  ["우즈베키스탄","🇺🇿",800,"2026년 월드컵 첫 본선 진출. 중앙아시아 축구의 선두주자.",0],
+  ["에콰도르","🇪🇨",700,"해발 2,850m 키토 홈경기. 원정팀은 숨부터 찹니다.",0],
+  ["네팔","🇳🇵",700,"히말라야 아래 흙바닥 구장에서도 리그가 돌아갑니다.",0],
+  ["잠비아","🇿🇲",700,"2012년 아프리카 네이션스컵 우승. 1993년 비행기 참사를 딛고 일군 기적.",0],
+  ["짐바브웨","🇿🇼",700,"«워리어스». 남아공 리그에서 뛰는 선수가 많습니다.",0],
+  ["모잠비크","🇲🇿",700,"에우제비우가 태어난 곳. 포르투갈로 가는 길이 열려 있습니다.",0],
+  ["체코","🇨🇿",700,"체코슬로바키아 시절 월드컵 준우승 2회, 유로 1976 우승. 네드베드의 나라.",0],
+  ["그리스","🇬🇷",700,"2004년 유로 우승, 축구 역사상 가장 큰 이변 중 하나.",0],
+  ["카자흐스탄","🇰🇿",600,"아시아에서 유럽(UEFA)으로 옮겨 간 나라. 원정 거리가 살인적입니다.",0],
+  ["아프가니스탄","🇦🇫",600,"2013년 남아시아 선수권 우승이 온 나라의 축제였습니다.",0],
+  ["튀니지","🇹🇳",600,"1978년 아프리카 팀 최초로 월드컵 본선 승리를 거뒀습니다.",0],
+  ["말리","🇲🇱",600,"유소년 대회 단골 강호. 세이두 케이타의 나라.",0],
+  ["부르키나파소","🇧🇫",600,"2013년 아프리카 네이션스컵 준우승. 서아프리카의 다크호스.",0],
+  ["과테말라","🇬🇹",600,"중미 리그의 열기와 아직 이루지 못한 월드컵 본선의 꿈.",0],
+  ["오스트리아","🇦🇹",600,"1930년대 «분더팀»의 나라. 지금은 레드불 시스템으로 재도약.",0],
+  ["스리랑카","🇱🇰",500,"크리켓 나라지만 콜롬보 골목 축구는 나름 진지합니다.",0],
+  ["시리아","🇸🇾",500,"2018년 월드컵 예선 플레이오프까지 갔던 투혼의 대표팀.",0],
+  ["예멘","🇾🇪",500,"어려운 상황에서도 유소년 대표팀은 아시아 무대에 꾸준히 나옵니다.",0],
+  ["기니","🇬🇳",500,"«실리 나시오날». 프랑스 리그로 가는 재능이 많습니다.",0],
+  ["마다가스카르","🇲🇬",500,"2019년 첫 네이션스컵 출전에서 8강. 섬나라의 동화.",0],
+  ["볼리비아","🇧🇴",500,"해발 3,600m 라파스. 1994년 월드컵 본선에 나간 적이 있습니다.",0],
+  ["온두라스","🇭🇳",500,"월드컵 본선 3회. 중미의 거친 축구를 대표합니다.",0],
+  ["헝가리","🇭🇺",500,"푸스카스와 «매직 마자르». 1954년 준우승의 영광이 아직 살아 있습니다.",0],
+  ["덴마크","🇩🇰",500,"1992년 유로 우승, 휴가 중 소집돼 우승한 전설. 라우드럽 형제의 나라.",0],
+  ["노르웨이","🇳🇴",500,"홀란과 외데고르. 인구 550만에서 나온 세계 정상급 듀오.",0],
+  ["세르비아","🇷🇸",500,"«발칸의 브라질». 기술 좋은 미드필더가 끝없이 나옵니다.",0],
+  ["벨라루스","🇧🇾",500,"글레프의 나라. 디나모 민스크가 옛 소련 챔피언이었습니다.",0],
+  ["캄보디아","🇰🇭",400,"프놈펜 올림픽 스타디움이 꽉 차는 날이 늘고 있습니다.",0],
+  ["북한","🇰🇵",400,"1966년 월드컵에서 이탈리아를 꺾고 8강. 2010년 본선에도 나갔습니다.",0],
+  ["리비아","🇱🇾",400,"2014년 아프리카 네이션스 챔피언십 우승.",0],
+  ["니제르","🇳🇪",400,"사하라의 축구. 네이션스컵 본선에 두 번 올랐습니다.",0],
+  ["차드","🇹🇩",400,"은자메나의 흙바닥 구장에서 리그가 열립니다.",0],
+  ["파라과이","🇵🇾",400,"골 넣는 골키퍼 칠라베르트의 나라. 수비가 단단하기로 유명.",0],
+  ["엘살바도르","🇸🇻",400,"1969년 «축구 전쟁»의 당사자. 월드컵 본선 2회.",0],
+  ["스위스","🇨🇭",400,"유소년 시스템이 탄탄해 인구 대비 빅리그 선수가 많습니다.",0],
+  ["핀란드","🇫🇮",400,"아이스하키의 나라지만 2020 유로 첫 본선으로 축구 붐이 일었습니다.",0],
+  ["아일랜드","🇮🇪",400,"게일릭 풋볼과 경쟁하지만 프리미어리그 팬 밀도는 세계 최고.",0],
+  ["스코틀랜드","🏴󠁧󠁢󠁳󠁣󠁴󠁿",400,"1872년 세계 최초 A매치를 치른 나라. 축구 규칙의 고향 중 하나.",0],
+  ["불가리아","🇧🇬",400,"1994년 월드컵 4강, 스토이치코프의 황금 세대.",0],
+  ["슬로바키아","🇸🇰",400,"2010년 월드컵에서 이탈리아를 탈락시킨 그 팀.",0],
+  ["대만","🇹🇼",300,"야구의 나라. 축구는 이제 막 리그를 키우는 중입니다.",0],
+  ["요르단","🇯🇴",300,"2023 아시안컵 준우승, 2026년 월드컵 첫 본선. 급성장 중.",0],
+  ["이스라엘","🇮🇱",300,"아시아에서 유럽(UEFA)으로 옮긴 나라. 1970년 월드컵 본선.",0],
+  ["르완다","🇷🇼",300,"«Visit Rwanda» 후원으로 아스널·PSG 유니폼에 이름을 올렸습니다.",0],
+  ["토고","🇹🇬",300,"아데바요르의 나라. 2006년 월드컵 본선.",0],
+  ["베냉","🇧🇯",300,"2019년 네이션스컵 8강. 서아프리카의 작은 거인.",0],
+  ["시에라리온","🇸🇱",300,"프리타운 해변에서 배우는 축구. 네이션스컵 본선 3회.",0],
+  ["콩고공화국","🇨🇬",300,"1972년 아프리카 네이션스컵 우승국.",0],
+  ["코스타리카","🇨🇷",300,"2014년 월드컵 8강, 나바스의 선방쇼. 중미 최강.",0],
+  ["쿠바","🇨🇺",300,"1938년 월드컵 8강. 야구에 밀렸지만 역사는 깊습니다.",0],
+  ["아이티","🇭🇹",300,"1974년 월드컵에서 이탈리아 상대로 첫 골을 넣은 그 나라.",0],
+  ["보스니아 헤르체고비나","🇧🇦",300,"제코와 피아니치. 2014년 월드컵 첫 본선.",0],
+  ["아제르바이잔","🇦🇿",300,"바쿠에서 유로 2020 경기가 열렸습니다.",0],
+  ["홍콩","🇭🇰",200,"1985년 베이징에서 중국을 꺾은 «5·19»의 주인공.",0],
+  ["레바논","🇱🇧",200,"2000년 아시안컵 개최국. 베이루트 더비가 뜨겁습니다.",0],
+  ["아랍에미리트","🇦🇪",200,"1990년 월드컵 본선. 걸프 리그 중심 국가 중 하나.",0],
+  ["오만","🇴🇲",200,"걸프컵 우승 2회. 골키퍼 알 합시가 프리미어리그에서 뛰었습니다.",0],
+  ["라이베리아","🇱🇷",200,"조지 웨아, 아프리카 유일의 발롱도르 수상자이자 대통령.",0],
+  ["파나마","🇵🇦",200,"2018년 월드컵 첫 본선. 첫 골이 터지자 나라가 공휴일을 선포했습니다.",0],
+  ["도미니카공화국","🇩🇴",200,"야구 왕국. 축구는 2024년 올림픽 본선으로 첫발을 뗐습니다.",0],
+  ["자메이카","🇯🇲",200,"1998년 월드컵 «레게 보이즈». 볼트도 축구선수가 되고 싶어 했습니다.",0],
+  ["웨일스","🏴󠁧󠁢󠁷󠁬󠁳󠁿",200,"베일과 램지. 2016년 유로 4강, 2022년 64년 만의 월드컵.",0],
+  ["알바니아","🇦🇱",200,"2016년 유로 첫 본선. 디아스포라 선수가 대표팀의 절반입니다.",0],
+  ["조지아","🇬🇪",200,"크바라츠헬리아의 나라. 2024년 유로 첫 본선에서 16강.",0],
+  ["뉴질랜드","🇳🇿",200,"2010년 월드컵 3무로 무패 탈락. 럭비 나라의 축구 자존심.",0],
+  ["라오스","🇱🇦",200,"메콩강변 마을마다 저녁이면 공을 찹니다.",0],
+  ["쿠웨이트","🇰🇼",150,"1980년 아시안컵 우승, 1982년 월드컵 본선. 걸프 축구의 원조 강호.",0],
+  ["가봉","🇬🇦",150,"오바메양의 나라. 2012·2017년 네이션스컵 개최.",0],
+  ["카타르","🇶🇦",100,"2022년 월드컵 개최국, 아시안컵 2연패(2019·2023). 아스파이어 아카데미의 힘.",0],
+  ["북아일랜드","🇬🇧",100,"조지 베스트의 고향. 1982년 월드컵에서 개최국 스페인을 꺾었습니다.",0],
+  ["슬로베니아","🇸🇮",100,"오블락의 나라. 인구 200만에 월드컵 본선 2회.",0],
+  ["북마케도니아","🇲🇰",100,"판데프가 이끈 2020 유로 첫 본선.",0],
+  ["리투아니아","🇱🇹",100,"농구의 나라. 축구는 조용히 리그를 키우는 중.",0],
+  ["라트비아","🇱🇻",100,"2004년 유로 본선이 축구 역사의 정점.",0],
+  ["아르메니아","🇦🇲",100,"음키타리안의 나라. 예레반 더비가 도시를 가릅니다.",0],
+  ["몽골","🇲🇳",100,"영하 30도 겨울 탓에 실내 풋살로 시즌을 버팁니다.",0],
+  ["싱가포르","🇸🇬",100,"동남아 클럽 대항전의 단골. 리그는 작지만 인프라는 좋습니다.",0],
+  ["파푸아뉴기니","🇵🇬",100,"럭비리그의 나라. 2016년 여자 U-20 월드컵을 개최했습니다.",0],
+  ["카보베르데","🇨🇻",50,"인구 50만의 섬나라가 2026년 월드컵 첫 본선에 올랐습니다.",0],
+  ["에스토니아","🇪🇪",50,"발트해의 작은 나라. 탈린 유스 시스템이 성장 중.",0],
+  ["키프로스","🇨🇾",40,"아포엘이 2012년 챔피언스리그 8강에 올랐던 그 섬.",0],
+  ["아이슬란드","🇮🇸",30,"인구 35만에 2016년 유로 8강, 2018년 월드컵 본선. 실내 구장의 기적.",0],
+  ["룩셈부르크","🇱🇺",30,"작지만 최근 대표팀 성적이 눈에 띄게 오르고 있습니다.",0],
+  ["몰타","🇲🇹",20,"지중해의 작은 섬. 프리미어리그 팬 비율은 유럽 최고 수준.",0],
+  ["브루나이","🇧🇳",20,"DPMM FC 가 싱가포르 리그에서 뜁니다.",0],
+  ["산마리노","🇸🇲",2,"FIFA 랭킹 최하위 단골. 2024년 첫 A매치 승리에 나라가 울었습니다.",0],
+];
+const WORLD_K = 265000; // 세계 축구 인구(천 명). 나라별 비중 표시용
+// 뽑기는 위 목록 안에서만 합니다. 목록에 없는 나라 몫은 비례 배분되므로 «그 외»는 나오지 않습니다.
+
+// 포지션: [코드, 이름, 비중, 등번호 후보, 평균키(프로), 좌표 4-3-3]
+const POS = [
+  ["GK","골키퍼",9,[1,12,21,23,31],189,[100,272]],
+  ["CB","센터백",17,[4,5,3,6,15],186,[76,232]],
+  ["FB","풀백",14,[2,3,22,17,24],178,[30,222]],
+  ["DM","수비형 미드필더",10,[6,5,16,14],181,[100,196]],
+  ["CM","중앙 미드필더",14,[8,10,14,18,20],178,[64,168]],
+  ["AM","공격형 미드필더",8,[10,7,11,8],176,[136,168]],
+  ["W","윙어",14,[7,11,17,19,27],176,[38,110]],
+  ["ST","스트라이커",14,[9,10,11,7,19],183,[100,86]],
+];
+// 4-3-3 전체 자리(고스트)
+const FORMATION = {
+  GK:[[100,272]], CB:[[76,232],[124,232]], FB:[[30,222],[170,222]],
+  DM:[[100,196]], CM:[[64,168]], AM:[[136,168]], W:[[38,110],[162,110]], ST:[[100,86]]
+};
+
+// 도달 단계: [이름, 인원(명, 2.65억 기준), 등급, 프로 여부]
+const TIERS = [
+  ["취미 축구인",227000000,1,false],
+  ["등록 아마추어 선수",37850000,2,false],
+  ["세미프로·하부리그 프로",40000,3,true],
+  ["자국 1부리그 프로",62000,4,true],
+  ["국가대표 (A매치 출전)",7000,5,true],
+  ["5대 리그 선수",2600,6,true],
+  ["월드컵 출전",1248,7,true],
+  ["발롱도르 수상",1,8,true],
+];
+const STORIES = {
+  1:["회사 축구 동호회에서 «왼발은 못 쓰지만 열정은 1등»으로 불립니다.","조기축구회 총무 7년 차. 유니폼 발주와 뒤풀이 예약이 주 종목입니다.","주말 풋살장 단골. 골키퍼 가위바위보에서 늘 집니다.","동네 공터에서 시작해 동네 공터에서 끝나는 가장 흔하고 가장 행복한 축구 인생.","아이 학교 아빠 축구단 에이스. 무릎이 먼저 은퇴를 선언했습니다."],
+  2:["유소년 클럽 등록 선수로 8년. 고2 때 십자인대가 진로를 정해 줬습니다.","지역 아마추어 리그 득점왕 2회. 지역 신문에 한 번 실렸습니다.","대학 축구부까지 갔지만 프로 드래프트에서 이름이 불리지 않았습니다.","지도자 자격증을 따서 지금은 초등부 코치. 선수보다 코치가 적성이었습니다.","여자 실업팀 입단 직전에 팀이 해체됐습니다. 지금은 풋살 국가대표 상비군."],
+  3:["3부리그에서 12시즌. 이적료 없이 팀을 여섯 번 옮겼고 팬 200명이 이름을 기억합니다.","2부리그 승격 플레이오프 결승에서 PK를 실축했습니다. 아직도 꿈에 나옵니다.","동남아 리그 용병 5년. 현지어로 인터뷰가 가능해졌습니다.","세미프로 계약, 낮에는 배달, 밤에는 훈련. 그래도 프로 계약서에 사인은 했습니다."],
+  4:["자국 1부리그 통산 240경기. 팀의 «원 클럽 맨»으로 은퇴식을 치렀습니다.","1부리그 데뷔골이 하필 자책골이었지만 이후 11시즌을 뛰었습니다.","리그 우승 1회, 컵 우승 2회. 라커룸 노래는 늘 당신 담당이었습니다.","1부리그 주장 완장을 차고 강등을 막아 낸 시즌이 커리어 최고의 순간입니다."],
+  5:["A매치 9경기 1골. 그 한 골이 아시안컵 8강 결승골이었습니다.","국가대표로 딱 한 번, 후반 43분 교체 투입. 그래도 «국대 출신»입니다.","월드컵 예선 원정 12경기 개근. 본선 명단 발표 날 이름이 없었습니다.","A매치 31경기. 대표팀 은퇴 후 해설위원으로 더 유명해졌습니다."],
+  6:["분데스리가 중위권 클럽에서 6시즌. 챔피언스리그 조별리그 무대를 밟았습니다.","프리미어리그 데뷔 시즌 팀 내 최다 태클. 팬들이 «벽»이라고 부릅니다.","세리에 A 3개 팀, 라리가 1개 팀. 유럽에서 14년을 뛰고 돌아왔습니다.","리그 1 득점 2위. 빅클럽 이적설이 매년 여름 뜹니다."],
+  7:["월드컵 2회 출전, 16강에서 페널티킥을 성공시켰습니다. 나라가 잠시 멈췄습니다.","월드컵 조별리그 3경기 풀타임. 나라 역사상 첫 승리의 어시스트가 당신 것입니다.","월드컵 준결승 진출. 대회 베스트 11에 이름을 올렸습니다.","월드컵 개막전 선발. 그 한 경기 사진이 고향 역 앞에 걸려 있습니다."],
+  8:["발롱도르. 챔피언스리그 결승 결승골과 월드컵 우승을 같은 해에 해냈습니다. 이 확률로 태어난 사람은 지구에 한 명뿐입니다."],
+};
+const FOOT = [["오른발",77],["왼발",20],["양발",3]];
+
+
+// ---------- 실없는 것들 ----------
+const grp = lv => lv<=2 ? "hobby" : lv<=4 ? "pro" : lv<=7 ? "top" : "god";
+const NICK = {
+  hobby:["동네 메시(자칭)","왼발잡이인데 왼발을 못 씀","뒤풀이의 황제","조기축구 최다 경고","헤딩은 눈 감고","유니폼 세탁 담당","슬라이딩 장인(잔디 아님)","골대 맞히기 세계 챔피언","전반만 뛰는 사람","패스 받자마자 넘어지는 선수","자책골 스페셜리스트","물 마시러 온 사람","공보다 빠른 입","심판과 친한 척","벤치의 분위기 메이커"],
+  pro:["3부리그의 지단","벤치의 왕","교체 카드 1순위","이적시장 단골손님","부상 복귀 전문가","감독 7명 살아남기","팬 200명의 영웅","한 골 넣고 은퇴할 뻔","라커룸 DJ","프리킥 담당(성공 0)"],
+  top:["국민 윙어","공항 패션 논란의 주인공","페널티킥 심장","풀타임 머신","광고 27개 찍은 발","인터뷰 어록 제조기","세리머니 특허 보유","국가대표 단골 교체 카드"],
+  god:["황금 발","걸어 다니는 동상"]
+};
+const CLUB_HOBBY_A=["새벽","일요","불사조","형제","동네","한잔","무릎","야근","아빠들","엄마들","전반전","월요병","비오면쉼"];
+const CLUB_HOBBY_B=["조기축구회","FC","유나이티드","축구단","풋살클럽","올스타"];
+const CLUB_PRO_A=["Real","FC","Sporting","Borussia","Atlético","Dinamo","Racing","Olympique","Inter","Al","Deportivo"];
+const CLUB_PRO_B=["어딘가","뭐시기","저쪽동네","안개","강변","언덕","시장통","광장","환승역","분식집앞"];
+function clubName(lv){
+  if(lv<=2) return CLUB_HOBBY_A[rnd(CLUB_HOBBY_A.length)]+" "+CLUB_HOBBY_B[rnd(CLUB_HOBBY_B.length)];
+  return CLUB_PRO_A[rnd(CLUB_PRO_A.length)]+" "+CLUB_PRO_B[rnd(CLUB_PRO_B.length)];
+}
+const SIG = {
+  GK:["펀칭이 골로 연결(우리 골)","선방 후 세리머니 중 실점","골킥이 코너킥 됨","드리블 나왔다가 못 돌아감","페널티킥 방향 반대로 점프"],
+  any:["헛다리 세 번 후 넘어짐","45m 중거리(코너킥 됨)","노룩 패스(상대에게)","골키퍼 앞에서 급정지","슬라이딩 후 사과","코너킥 직접 골(의도 없음)","무회전 슛(회전 여부 불명)","등으로 골 넣기","오프사이드 트랩에 혼자 걸림","수비수인데 공격만 함","심판에게 하이파이브","마르세유 턴(반 바퀴)","스로인 파울","세리머니 준비하다 노골","라보나(실패)"]
+};
+const AFTER = {
+  hobby:["여전히 조기축구. 무릎만 은퇴","풋살장 사장(적자)","구독자 312명 축구 유튜버","아이 축구 학원 라이드 담당","동호회 감독 겸 선수 겸 총무","치킨집 사장, 상호 «골든볼»","축구 게임 랭커","응원단장"],
+  pro:["유소년 코치","해설위원(케이블)","에이전트로 전향","치킨집 사장, 상호 «오프사이드»","심판 자격증 취득","골프로 전향, 핸디 12","축구화 리뷰 유튜버","구단 프런트 말단"],
+  top:["국가대표 감독(1년 만에 경질)","예능 고정 출연","해설위원(지상파)","구단주","정치 입문","축구 아카데미 원장","광고 모델 은퇴 안 함"],
+  god:["동상이 세워짐. 발이 실제보다 큼"]
+};
+const CALL = {
+  1:["네.","…","이게 인생입니다.","축구는 즐기는 거죠.","괜찮습니다, 다음 생이 있습니다."],
+  2:["아깝습니다!","조금만 더 컸으면…","재능은 있었습니다."],
+  3:["프로입니다!","계약서에 사인했습니다!"],4:["1부리그입니다!","주전 경쟁 시작!"],
+  5:["국가대표! 믿을 수 없습니다!","애국가가 울립니다!"],6:["빅리그! 빅리그입니다!","유럽이 놀랐습니다!"],
+  7:["월드컵! 월드컵!","전 세계가 지켜봅니다!"],8:["역사가 만들어졌습니다!!!"]
+};
+const rnd = n => Math.floor(Math.random()*n);
+const pick = a => a[rnd(a.length)];
+function record(lv){
+  if(lv<=2){ const g=rnd(30), og=rnd(6)+(g?0:1); return `통산 ${g}골 ${og}자책골 · 뒤풀이 참석률 ${85+rnd(16)}%`; }
+  const base=[0,0,0,120,240,300,380,420,600][lv]; const m=base+rnd(base); const g=Math.round(m*(0.02+Math.random()*0.35)); const a=Math.round(m*(0.02+Math.random()*0.25));
+  return `통산 ${m}경기 ${g}골 ${a}도움 · 경고 ${rnd(m/4|0)+1}장`;
+}
+
+// ---------- 유틸 ----------
+const $ = id => document.getElementById(id);
+function pickWeighted(items, w){ let t=0; for(const it of items) t+=w(it); let r=Math.random()*t; for(const it of items){ r-=w(it); if(r<=0) return it;} return items[items.length-1]; }
+function gauss(){ let u=0,v=0; while(!u)u=Math.random(); while(!v)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+function fmtPct(p){ if(p>=0.01) return (p*100).toFixed(2)+"%"; if(p>=0.0001) return (p*100).toFixed(4)+"%"; return (p*100).toExponential(1).replace("e-","×10⁻")+"%"; }
+function fmtOne(p){ const n=Math.round(1/p); return "약 "+n.toLocaleString("ko-KR")+"명 중 1명"; }
+function fmtPeople(n){ if(n>=1e8) return (n/1e8).toFixed(2).replace(/\.?0+$/,"")+"억명"; if(n>=1e4) return Math.round(n/1e4).toLocaleString("ko-KR")+"만명"; return n.toLocaleString("ko-KR")+"명"; }
+
+// ---------- 상태 ----------
+let mode = "all";
+let state = {count:0, recent:[], best:0};
+try{ const s=JSON.parse(localStorage.getItem("fr-state")||"null"); if(s&&typeof s==="object") state={count:s.count|0, recent:Array.isArray(s.recent)?s.recent.slice(0,10):[], best:s.best|0}; }catch(e){}
+function save(){ try{ localStorage.setItem("fr-state",JSON.stringify(state)); }catch(e){} }
+
+function pool(){ return mode==="pro" ? TIERS.filter(t=>t[3]) : TIERS; }
+function poolTotal(){ return pool().reduce((s,t)=>s+t[1],0); }
+
+function setMode(m){
+  mode=m;
+  $("modeAll").setAttribute("aria-pressed", m==="all");
+  $("modePro").setAttribute("aria-pressed", m==="pro");
+  $("poolLabel").textContent = m==="pro" ? "프로 선수" : "축구 인구";
+  $("poolV").textContent = m==="pro" ? "11.3만명" : "2.65억명";
+  $("sub").textContent = m==="pro"
+    ? "전 세계 프로 계약 선수 약 11만 3천 명 중 한 명으로 다시 태어납니다. 최소 프로는 보장됩니다."
+    : "지구에서 공을 차는 사람 2억 6천만 명 중 한 명으로 무작위로 다시 태어납니다.";
+}
+$("modeAll").onclick=()=>setMode("all");
+$("modePro").onclick=()=>setMode("pro");
+
+// ---------- 경기장 ----------
+function dotsMarkup(code, pulse){
+  let html="";
+  for(const k in FORMATION) for(const [x,y] of FORMATION[k]) if(k!==code) html+=`<circle class="ghost" cx="${x}" cy="${y}" r="7"/>`;
+  if(code){ const [x,y]=FORMATION[code][0]; html+=`<circle class="me${pulse?" pulse":""}" cx="${x}" cy="${y}" r="9"/>`; }
+  return html;
+}
+function drawPitch(code, pulse){ $("dots").innerHTML = dotsMarkup(code,pulse); }
+function pitchMarkup(code){
+  const inner = $("pitch").innerHTML.replace(/<g id="dots">[\s\S]*<\/g>/, '<g>'+dotsMarkup(code,false)+'</g>');
+  return `<svg viewBox="0 0 200 300" aria-hidden="true">${inner}</svg>`;
+}
+drawPitch(null,false);
+
+// ---------- 환생 ----------
+function roll(){
+  const c = pickWeighted(COUNTRIES, x=>x[2]);
+  const p = pickWeighted(POS, x=>x[2]);
+  const t = pickWeighted(pool(), x=>x[1]);
+  const f = pickWeighted(FOOT, x=>x[1])[0];
+  const pro = t[3];
+  const height = Math.round((pro ? p[4] : 172) + gauss()*(pro?5:7));
+  const number = p[3][Math.floor(Math.random()*p[3].length)];
+  const debut = pro ? 17+Math.floor(Math.random()*5) : null;
+  const retire = pro ? 29+Math.floor(Math.random()*9) : null;
+  const story = STORIES[t[2]][Math.floor(Math.random()*STORIES[t[2]].length)];
+  const g = grp(t[2]);
+  const nick = pick(NICK[g]);
+  const club = clubName(t[2]);
+  const sig = p[0]==="GK" && Math.random()<0.6 ? pick(SIG.GK) : pick(SIG.any);
+  const after = pick(AFTER[g]);
+  const call = pick(CALL[t[2]]);
+  const rec = record(t[2]);
+  const peer = { c:pickWeighted(COUNTRIES,x=>x[2]), p:pickWeighted(POS,x=>x[2]), t:pickWeighted(pool(),x=>x[1]) };
+  const peerNote = peer.t[2]>t[2] ? "네, 동기가 더 잘됐습니다." : peer.t[2]<t[2] ? "동기는 더 못 갔습니다. 위안 삼으세요." : "동기도 똑같습니다. 친구 하세요.";
+  return {c,p,t,f,height,number,debut,retire,story,nick,club,sig,after,call,rec,peer,peerNote,prob:t[1]/poolTotal(),cprob:c[2]/WORLD_K};
+}
+
+function render(r){
+  const [cname,flag,ck,cline,cups]=r.c;
+  const gold = r.t[2]>=5;
+  $("side").innerHTML = `
+    <div class="where">🎙 ${r.call}</div>
+    <h2 class="tier${gold?" gold":""}">${r.t[0]}</h2>
+    <p class="lead">${flag} <b>${cname}</b> 출생 <b>${r.p[1]}</b>, 별명은 «${r.nick}».</p>
+    <ul class="facts">
+      <li><span class="k">주발</span><span class="d">${r.f}</span></li>
+      <li><span class="k">키</span><span class="d"><span class="num">${r.height}</span>cm</span></li>
+      <li><span class="k">등번호</span><span class="d"><span class="num">${r.number}</span>번</span></li>
+      <li><span class="k">소속</span><span class="d">${r.club}</span></li>
+      <li><span class="k">시그니처</span><span class="d">${r.sig}</span></li>
+      <li><span class="k">은퇴 후</span><span class="d">${r.after}</span></li>
+    </ul>
+    <p class="story">${r.story}<br><span class="rec">${r.rec}</span></p>
+    <p class="peer">같은 해 동기 ${r.peer.c[1]} ${r.peer.c[0]} ${r.peer.p[1]} → <b>${r.peer.t[0]}</b>. ${r.peerNote}</p>
+    <ul class="country">
+      <li>⚽ ${cname} 축구 인구 약 ${fmtPeople(ck*1000)} (세계의 ${(r.cprob*100).toFixed(1)}%)${cups?` · 🏆 월드컵 우승 ${cups}회`:""}</li>
+      <li>${cline}</li>
+    </ul>`;
+  $("tierV").textContent = r.t[0];
+  $("probV").textContent = fmtPct(r.prob);
+  drawPitch(r.p[0], true);
+}
+
+function renderRecent(){
+  const ul=$("recent");
+  if(!state.recent.length){ ul.innerHTML='<li><span></span><span class="empty">아직 없음</span><span></span></li>'; }
+  else ul.innerHTML = state.recent.map(x=>`<li><span class="flag">${x.flag}</span><span>${x.c}<span class="pos">${x.pos}</span></span><span class="chip t${x.lv}">${x.tier}</span></li>`).join("");
+  $("recN").textContent = state.count ? state.count : "";
+  $("countV").textContent = state.count;
+  const b = TIERS.find(t=>t[2]===state.best);
+  $("bestV").textContent = b ? b[0] : "없음";
+}
+renderRecent();
+
+
+// ---------- 공유 카드 ----------
+let last=null;
+function openCard(r){
+  const [cname,flag,ck,cline,cups]=r.c;
+  const oneIn = Math.round(1/r.prob).toLocaleString("ko-KR");
+  $("card").innerHTML = `
+    <div class="brand"><span>⚽ <b>축구선수로 다시 태어나기</b></span><span class="num">LIFE #${state.count}</span></div>
+    <div class="hero"><div class="flag">${flag}</div><div><div class="k">${cname} 출생 · ${r.p[1]}</div><div class="n">«${r.nick}»</div></div></div>
+    <h2 class="ctier"><small>🎙 ${r.call}</small>${r.t[0]}</h2>
+    <div class="row">${pitchMarkup(r.p[0])}
+      <ul class="cf">
+        <li><span class="k">주발</span><span class="d">${r.f}</span></li>
+        <li><span class="k">키 · 등번호</span><span class="d"><span class="num">${r.height}</span>cm · <span class="num">${r.number}</span>번</span></li>
+        <li><span class="k">소속</span><span class="d">${r.club}</span></li>
+        <li><span class="k">시그니처</span><span class="d">${r.sig}</span></li>
+        <li><span class="k">은퇴 후</span><span class="d">${r.after}</span></li>
+        <li><span class="k">${r.debut?"선수 생활":"축구 인생"}</span><span class="d">${r.debut?`<span class="num">${r.debut}</span>→<span class="num">${r.retire}</span>세`:"평생"}</span></li>
+      </ul></div>
+    <p class="cstory">${r.story}<br><span class="rec">${r.rec}</span></p>
+    <p class="cpeer">같은 해 동기 ${r.peer.c[1]} ${r.peer.c[0]} ${r.peer.p[1]} → <b>${r.peer.t[0]}</b><br>${r.peerNote}</p>
+    <div class="odds"><span>이 삶으로 태어날 확률<br>${oneIn}명 중 1명</span><span class="num">${fmtPct(r.prob)}</span></div>
+    <div class="cfoot"><b>${cname}</b> 축구 인구 약 ${fmtPeople(ck*1000)} · 세계의 ${(r.cprob*100).toFixed(1)}%${cups?` · 월드컵 우승 ${cups}회`:""}<br>${mode==="pro"?"프로 선수 11.3만 명 기준":"축구 인구 2.65억 명 기준"} · FIFA Big Count 근사치</div>
+    <div class="hint" id="hint">화면을 캡처하세요 · 아무 곳이나 탭하면 닫혀요</div>`;
+  $("card").classList.toggle("rare", r.t[2]>=6);
+  $("share").classList.add("open");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>{ const h=$("hint"); if(h) h.classList.add("gone"); }, 3200);
+}
+function closeCard(){ $("share").classList.remove("open"); document.body.style.overflow=""; }
+$("share").onclick=closeCard;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeCard(); });
+$("again").onclick=()=>{ if(last) openCard(last); };
+
+const btn=$("go");
+btn.onclick=()=>{
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  btn.disabled=true;
+  const r=roll();
+  const finish=()=>{
+    render(r);
+    state.count++;
+    state.recent.unshift({flag:r.c[1], c:r.c[0], pos:r.p[1], tier:r.t[0], lv:r.t[2]});
+    state.recent=state.recent.slice(0,10);
+    if(r.t[2]>state.best) state.best=r.t[2];
+    save(); renderRecent(); btn.disabled=false;
+    last=r; $("again").classList.add("show"); openCard(r);
+  };
+  if(reduce){ finish(); return; }
+  // 국기 룰렛
+  let i=0; const iv=setInterval(()=>{
+    const c=COUNTRIES[Math.floor(Math.random()*COUNTRIES.length)];
+    const p=POS[Math.floor(Math.random()*POS.length)];
+    $("tierV").textContent=c[1]+" "+c[0];
+    drawPitch(p[0],false);
+    if(++i>=12){ clearInterval(iv); finish(); }
+  },70);
+};
+$("reset").onclick=()=>{ state={count:0,recent:[],best:0}; save(); renderRecent(); $("tierV").textContent="?"; $("probV").textContent="—"; };
+</script>
+</body></html>
