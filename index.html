@@ -103,28 +103,28 @@ footer a{color:inherit}
 .share.open{display:flex}
 .card{--g1:#1F5C35;--g2:#1A4F2D;--cg:#F2C64B;--cm:rgba(255,255,255,.62);position:relative;width:100%;height:100dvh;overflow:auto;color:#fff;
   background:repeating-linear-gradient(180deg,var(--g1) 0 12.5%,var(--g2) 12.5% 25%);
-  padding:calc(env(safe-area-inset-top,0px) + 18px) 22px calc(env(safe-area-inset-bottom,0px) + 18px);
+  padding:calc(env(safe-area-inset-top,0px) + 16px) 20px calc(env(safe-area-inset-bottom,0px) + 16px);
   display:flex;flex-direction:column;gap:clamp(6px,1.2dvh,14px);font-family:"Noto Sans KR",-apple-system,system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
-@media (min-width:640px){.card{width:390px;height:min(820px,94vh);border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.5)}}
+@media (min-width:640px){.card{width:360px;height:min(740px,92vh);border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.5)}}
 .card .brand{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--cm);letter-spacing:.02em}
 .card .brand b{color:#fff;font-weight:700}
 .card .brand .num{font-size:16px;color:var(--cg);letter-spacing:.08em}
 .card .hero{display:flex;align-items:center;gap:12px;margin-top:clamp(0px,.6dvh,8px)}
-.card .flag{font-size:clamp(44px,8dvh,60px);line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.card .flag{font-size:clamp(34px,5.5dvh,44px);line-height:1;filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
 .card .hero .k{font-size:12px;color:var(--cm);letter-spacing:.06em}
-.card .hero .n{font-size:clamp(22px,3.4dvh,28px);font-weight:900;line-height:1.15;letter-spacing:-.02em}
-.card .ctier{margin:0;font-size:clamp(30px,5.2dvh,42px);line-height:1.05;font-weight:900;letter-spacing:-.03em;color:var(--cg);text-wrap:balance}
+.card .hero .n{font-size:clamp(18px,2.6dvh,22px);font-weight:900;line-height:1.15;letter-spacing:-.02em}
+.card .ctier{margin:0;font-size:clamp(26px,4dvh,32px);line-height:1.08;font-weight:900;letter-spacing:-.03em;color:var(--cg);text-wrap:balance}
 .card .ctier small{display:block;font-size:12px;font-weight:500;color:var(--cm);letter-spacing:.04em;margin-bottom:6px}
-.card .row{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:stretch}
-.card .row svg{width:104px;height:auto;display:block;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.card .row{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center}
+.card .row svg{width:84px;height:auto;display:block;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .card .cf{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;align-content:center}
 .card .cf li{border-top:1px solid rgba(255,255,255,.22);padding-top:6px;min-width:0}
 .card .cf .k{display:block;font-size:10.5px;color:var(--cm);letter-spacing:.08em}
 .card .cf .d{font-weight:700;font-size:15px;white-space:nowrap}
-.card .cf .d .num{font-size:22px;line-height:1;vertical-align:-1px;margin-right:1px;color:#fff}
-.card .cstory{margin:0;padding:12px 14px;background:rgba(0,0,0,.28);border-left:3px solid var(--cg);border-radius:10px;font-size:clamp(13px,1.9dvh,15px);line-height:1.5}
+.card .cf .d .num{font-size:19px;line-height:1;vertical-align:-1px;margin-right:1px;color:#fff}
+.card .cstory{margin:0;padding:10px 12px;background:rgba(0,0,0,.28);border-left:3px solid var(--cg);border-radius:10px;font-size:clamp(13px,1.9dvh,15px);line-height:1.5}
 .card .odds{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(255,255,255,.22);padding-top:10px;font-size:12px;color:var(--cm)}
-.card .odds .num{font-size:clamp(26px,4dvh,34px);color:#fff;line-height:1}
+.card .odds .num{font-size:clamp(24px,3.4dvh,30px);color:#fff;line-height:1}
 .card .cfoot{margin-top:auto;font-size:11px;line-height:1.5;color:var(--cm)}
 .card .cfoot b{color:#fff;font-weight:700}
 .card .hint{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 76px);transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:opacity .5s;pointer-events:none}
@@ -137,7 +137,7 @@ footer a{color:inherit}
 .peer{margin:0;font-size:13px;color:var(--mute);border-left:2px solid var(--line);padding-left:10px}
 .peer b{color:var(--ink)}
 .card .cf{grid-template-columns:1fr 1fr}
-.card .cf .d{white-space:normal;font-size:13px;line-height:1.3}
+.card .cf .d{white-space:normal;font-size:12.5px;line-height:1.3}
 .card .cstory .rec{display:block;margin-top:5px;font-size:11.5px;opacity:.8}
 .card .cpeer{margin:0;font-size:12px;color:var(--cm);line-height:1.45;border-left:2px solid rgba(255,255,255,.3);padding-left:10px}
 .card .cpeer b{color:#fff}
@@ -184,7 +184,7 @@ footer a{color:inherit}
       </svg>
     </div>
     <div class="side" id="side">
-      <p class="empty">아래 버튼을 누르면 국적·포지션·주발·키와 함께 <b>이번 생에 어디까지 올라가는지</b>가 정해집니다. 대부분은 동네 축구로 끝납니다. 원래 그렇습니다.</p>
+      <p class="empty">아래 버튼을 누르면 국적·포지션·주발·키와 함께 <b>이번 생에 어디까지 올라가는지</b>가 정해집니다. 대부분은 동네 축구 인생입니다. 그것도 꽤 좋은 인생입니다.</p>
     </div>
   </div>
 
@@ -384,14 +384,14 @@ const TIERS = [
   ["발롱도르 수상",1,8,true],
 ];
 const STORIES = {
-  1:["회사 축구 동호회에서 «왼발은 못 쓰지만 열정은 1등»으로 불립니다.","조기축구회 총무 7년 차. 유니폼 발주와 뒤풀이 예약이 주 종목입니다.","주말 풋살장 단골. 골키퍼 가위바위보에서 늘 집니다.","동네 공터에서 시작해 동네 공터에서 끝나는 가장 흔하고 가장 행복한 축구 인생.","아이 학교 아빠 축구단 에이스. 무릎이 먼저 은퇴를 선언했습니다."],
-  2:["유소년 클럽 등록 선수로 8년. 고2 때 십자인대가 진로를 정해 줬습니다.","지역 아마추어 리그 득점왕 2회. 지역 신문에 한 번 실렸습니다.","대학 축구부까지 갔지만 프로 드래프트에서 이름이 불리지 않았습니다.","지도자 자격증을 따서 지금은 초등부 코치. 선수보다 코치가 적성이었습니다.","여자 실업팀 입단 직전에 팀이 해체됐습니다. 지금은 풋살 국가대표 상비군."],
-  3:["3부리그에서 12시즌. 이적료 없이 팀을 여섯 번 옮겼고 팬 200명이 이름을 기억합니다.","2부리그 승격 플레이오프 결승에서 PK를 실축했습니다. 아직도 꿈에 나옵니다.","동남아 리그 용병 5년. 현지어로 인터뷰가 가능해졌습니다.","세미프로 계약, 낮에는 배달, 밤에는 훈련. 그래도 프로 계약서에 사인은 했습니다."],
-  4:["자국 1부리그 통산 240경기. 팀의 «원 클럽 맨»으로 은퇴식을 치렀습니다.","1부리그 데뷔골이 하필 자책골이었지만 이후 11시즌을 뛰었습니다.","리그 우승 1회, 컵 우승 2회. 라커룸 노래는 늘 당신 담당이었습니다.","1부리그 주장 완장을 차고 강등을 막아 낸 시즌이 커리어 최고의 순간입니다."],
-  5:["A매치 9경기 1골. 그 한 골이 아시안컵 8강 결승골이었습니다.","국가대표로 딱 한 번, 후반 43분 교체 투입. 그래도 «국대 출신»입니다.","월드컵 예선 원정 12경기 개근. 본선 명단 발표 날 이름이 없었습니다.","A매치 31경기. 대표팀 은퇴 후 해설위원으로 더 유명해졌습니다."],
+  1:["회사 축구 동호회에서 «왼발은 못 쓰지만 열정은 1등»으로 불립니다. 회식보다 축구 참석률이 높습니다.","조기축구회 총무 7년 차. 유니폼 발주와 뒤풀이 예약까지, 이 팀은 당신 없이 안 돌아갑니다.","주말 풋살장 단골. 골키퍼 가위바위보에서 늘 지지만 선방하면 제일 크게 환호받습니다.","동네 공터에서 시작해 동네 공터에서 계속되는, 가장 흔하고 가장 행복한 축구 인생.","아이 학교 부모 축구단 에이스. 아이가 «우리 엄마 아빠 축구 잘해»라고 자랑합니다.","30년째 같은 팀. 골은 적지만 이 팀의 모든 골 세리머니에 당신이 있습니다."],
+  2:["유소년 클럽 등록 선수로 8년. 프로는 못 됐지만 그때 배운 팀워크로 지금 회사에서 잘나갑니다.","지역 아마추어 리그 득점왕 2회. 지역 신문에 실린 기사를 부모님이 아직 액자에 걸어 두셨습니다.","대학 축구부까지 갔습니다. 드래프트는 못 됐지만 그때 동기들이 평생 친구입니다.","지도자 자격증을 따서 지금은 초등부 코치. 아이들이 제일 좋아하는 선생님입니다.","실업팀 입단 직전 팀이 해체됐지만, 지금은 풋살 국가대표 상비군. 축구가 당신을 놓지 않았습니다."],
+  3:["3부리그에서 12시즌. 팀을 여섯 번 옮겼고, 여섯 팀 팬들이 모두 이름을 기억합니다.","2부리그 승격 플레이오프 결승 PK를 성공시켰습니다. 그 동네에선 아직도 밥값을 안 냅니다.","동남아 리그 용병 5년. 현지어로 인터뷰가 가능해졌고 현지에 팬클럽이 있습니다.","세미프로 계약, 낮에는 일, 밤에는 훈련. 그래도 프로 계약서에 사인한 사람은 1,000명 중 3명뿐입니다."],
+  4:["자국 1부리그 통산 240경기. 팀의 «원 클럽 맨»으로 은퇴식을 치렀습니다.","1부리그 데뷔골이 하필 자책골이었지만, 그 뒤 11시즌 동안 진짜 골을 60개 넣었습니다.","리그 우승 1회, 컵 우승 2회. 라커룸 노래는 늘 당신 담당이었습니다.","1부리그 주장 완장을 차고 강등을 막아 낸 시즌이 커리어 최고의 순간입니다."],
+  5:["A매치 9경기 1골. 그 한 골이 아시안컵 8강 결승골이었습니다.","국가대표로 딱 한 번, 후반 43분 교체 투입. 그 3분을 온 가족이 아직도 돌려 봅니다.","월드컵 예선 원정 12경기 개근. 본선은 못 갔지만 예선 팀 동료들이 «당신 덕분»이라고 말합니다.","A매치 31경기. 대표팀 은퇴 후 해설위원으로 더 유명해졌습니다."],
   6:["분데스리가 중위권 클럽에서 6시즌. 챔피언스리그 조별리그 무대를 밟았습니다.","프리미어리그 데뷔 시즌 팀 내 최다 태클. 팬들이 «벽»이라고 부릅니다.","세리에 A 3개 팀, 라리가 1개 팀. 유럽에서 14년을 뛰고 돌아왔습니다.","리그 1 득점 2위. 빅클럽 이적설이 매년 여름 뜹니다."],
   7:["월드컵 2회 출전, 16강에서 페널티킥을 성공시켰습니다. 나라가 잠시 멈췄습니다.","월드컵 조별리그 3경기 풀타임. 나라 역사상 첫 승리의 어시스트가 당신 것입니다.","월드컵 준결승 진출. 대회 베스트 11에 이름을 올렸습니다.","월드컵 개막전 선발. 그 한 경기 사진이 고향 역 앞에 걸려 있습니다."],
-  8:["발롱도르. 챔피언스리그 결승 결승골과 월드컵 우승을 같은 해에 해냈습니다. 이 확률로 태어난 사람은 지구에 한 명뿐입니다."],
+  8:["발롱도르. 챔피언스리그 결승 결승골과 월드컵 우승을 같은 해에 해냈습니다. 그리고 수상 소감에서 동네 코치 이름을 제일 먼저 불렀습니다."],
 };
 const FOOT = [["오른발",77],["왼발",20],["양발",3]];
 
@@ -399,12 +399,12 @@ const FOOT = [["오른발",77],["왼발",20],["양발",3]];
 // ---------- 실없는 것들 ----------
 const grp = lv => lv<=2 ? "hobby" : lv<=4 ? "pro" : lv<=7 ? "top" : "god";
 const NICK = {
-  hobby:["동네 메시(자칭)","왼발잡이인데 왼발을 못 씀","뒤풀이의 황제","조기축구 최다 경고","헤딩은 눈 감고","유니폼 세탁 담당","슬라이딩 장인(잔디 아님)","골대 맞히기 세계 챔피언","전반만 뛰는 사람","패스 받자마자 넘어지는 선수","자책골 스페셜리스트","물 마시러 온 사람","공보다 빠른 입","심판과 친한 척","벤치의 분위기 메이커"],
-  pro:["3부리그의 지단","벤치의 왕","교체 카드 1순위","이적시장 단골손님","부상 복귀 전문가","감독 7명 살아남기","팬 200명의 영웅","한 골 넣고 은퇴할 뻔","라커룸 DJ","프리킥 담당(성공 0)"],
-  top:["국민 윙어","공항 패션 논란의 주인공","페널티킥 심장","풀타임 머신","광고 27개 찍은 발","인터뷰 어록 제조기","세리머니 특허 보유","국가대표 단골 교체 카드"],
+  hobby:["동네 메시(동네가 인정)","뒤풀이의 황제","골대 맞히기 세계 챔피언","패스 받으면 일단 웃는 사람","팀의 심장(자칭이지만 팀도 동의)","슬라이딩 장인(사과도 장인)","전반전의 사나이","헤딩은 눈 감아도 정확","유니폼 세탁의 신","경기 전 파이팅 담당","공보다 빠른 응원","심판도 좋아하는 선수","벤치의 분위기 메이커","비 와도 나오는 사람","골 넣고 제일 먼저 우는 사람"],
+  pro:["3부리그의 지단","벤치의 왕(벤치도 행복)","교체 투입 즉시 분위기 반전","이적시장 인기인","부상 복귀 전문가(매번 더 강해짐)","감독 7명이 모두 좋아한 선수","팬 200명의 영웅","라커룸 DJ","프리킥 담당(언젠가 들어감)","후배들이 제일 따르는 형님·언니"],
+  top:["국민 윙어","공항 패션 화제의 주인공","페널티킥 강심장","풀타임 머신","광고 27개 찍은 발","인터뷰 어록 제조기","세리머니 특허 보유","팬 사인 절대 안 거절"],
   god:["황금 발","걸어 다니는 동상"]
 };
-const CLUB_HOBBY_A=["새벽","일요","불사조","형제","동네","한잔","무릎","야근","아빠들","엄마들","전반전","월요병","비오면쉼"];
+const CLUB_HOBBY_A=["새벽","일요","불사조","형제","동네","한잔","무릎튼튼","퇴근후","아빠들","엄마들","전반전","월요일도","비와도뛰는"];
 const CLUB_HOBBY_B=["조기축구회","FC","유나이티드","축구단","풋살클럽","올스타"];
 const CLUB_PRO_A=["Real","FC","Sporting","Borussia","Atlético","Dinamo","Racing","Olympique","Inter","Al","Deportivo"];
 const CLUB_PRO_B=["어딘가","뭐시기","저쪽동네","안개","강변","언덕","시장통","광장","환승역","분식집앞"];
@@ -413,18 +413,18 @@ function clubName(lv){
   return CLUB_PRO_A[rnd(CLUB_PRO_A.length)]+" "+CLUB_PRO_B[rnd(CLUB_PRO_B.length)];
 }
 const SIG = {
-  GK:["펀칭이 골로 연결(우리 골)","선방 후 세리머니 중 실점","골킥이 코너킥 됨","드리블 나왔다가 못 돌아감","페널티킥 방향 반대로 점프"],
-  any:["헛다리 세 번 후 넘어짐","45m 중거리(코너킥 됨)","노룩 패스(상대에게)","골키퍼 앞에서 급정지","슬라이딩 후 사과","코너킥 직접 골(의도 없음)","무회전 슛(회전 여부 불명)","등으로 골 넣기","오프사이드 트랩에 혼자 걸림","수비수인데 공격만 함","심판에게 하이파이브","마르세유 턴(반 바퀴)","스로인 파울","세리머니 준비하다 노골","라보나(실패)"]
+  GK:["페널티킥 선방 후 관중석 인사","골킥이 어시스트가 됨","드리블 나와서 골(한 번, 전설)","선방하고 상대도 격려","1대1 상황에서 웃으며 막기"],
+  any:["헛다리 세 번 후 골","45m 중거리(한 번 들어감, 전설)","노룩 패스(가끔 성공)","코너킥 직접 골(의도 있었음)","무회전 슛(본인만 확신)","등으로 골 넣기","슬라이딩 후 상대 일으켜 세우기","마르세유 턴(한 바퀴 반)","심판에게 하이파이브","세리머니가 골보다 유명","라보나(성공률 10%, 시도율 100%)","수비수인데 공격 가담 1등","골 넣고 벤치까지 전력 질주","스로인 하나로 분위기 반전","동료 골에 제일 크게 기뻐하기"]
 };
 const AFTER = {
-  hobby:["여전히 조기축구. 무릎만 은퇴","풋살장 사장(적자)","구독자 312명 축구 유튜버","아이 축구 학원 라이드 담당","동호회 감독 겸 선수 겸 총무","치킨집 사장, 상호 «골든볼»","축구 게임 랭커","응원단장"],
-  pro:["유소년 코치","해설위원(케이블)","에이전트로 전향","치킨집 사장, 상호 «오프사이드»","심판 자격증 취득","골프로 전향, 핸디 12","축구화 리뷰 유튜버","구단 프런트 말단"],
-  top:["국가대표 감독(1년 만에 경질)","예능 고정 출연","해설위원(지상파)","구단주","정치 입문","축구 아카데미 원장","광고 모델 은퇴 안 함"],
-  god:["동상이 세워짐. 발이 실제보다 큼"]
+  hobby:["은퇴 없음. 여전히 일요일마다 뜀","풋살장 사장, 동네 아이들은 무료","구독자 312명 축구 유튜버, 댓글은 전부 따뜻함","아이 축구 학원 라이드 담당(제일 크게 응원)","동호회 감독 겸 선수 겸 총무 겸 응원단장","치킨집 사장, 상호 «골든볼», 경기 날 할인","축구 게임 랭커(실제보다 잘함)","손주에게 축구 가르치는 중"],
+  pro:["유소년 코치, 아이들이 제일 좋아하는 선생님","해설위원, 목소리가 좋다는 평","에이전트, 후배들 계약 챙기는 중","치킨집 사장, 상호 «오프사이드», 늘 만석","심판 자격증 취득, 공정하기로 유명","골프로 전향, 핸디 12, 여전히 즐거움","축구화 리뷰 유튜버, 솔직해서 인기","구단 프런트, 유소년 담당"],
+  top:["국가대표 감독, 선수들이 제일 좋아함","예능 고정 출연, 예능감 있음","해설위원(지상파), 명언 제조 중","고향 구단 구단주","축구 아카데미 원장, 매년 프로 배출","광고 모델 아직도 현역","자선 경기 단골 주장"],
+  god:["고향에 동상이 세워짐. 발이 실제보다 큼(팬들 요청)"]
 };
 const CALL = {
-  1:["네.","…","이게 인생입니다.","축구는 즐기는 거죠.","괜찮습니다, 다음 생이 있습니다."],
-  2:["아깝습니다!","조금만 더 컸으면…","재능은 있었습니다."],
+  1:["축구는 즐기는 사람이 최고입니다!","오늘도 뜁니다. 그게 전부죠!","행복한 축구 인생입니다!","이 선수, 축구를 진짜 사랑합니다!","동네가 이 선수를 사랑합니다!"],
+  2:["재능도 열정도 있었습니다!","이 선수, 끝까지 뜁니다!","팀이 이 선수를 필요로 합니다!"],
   3:["프로입니다!","계약서에 사인했습니다!"],4:["1부리그입니다!","주전 경쟁 시작!"],
   5:["국가대표! 믿을 수 없습니다!","애국가가 울립니다!"],6:["빅리그! 빅리그입니다!","유럽이 놀랐습니다!"],
   7:["월드컵! 월드컵!","전 세계가 지켜봅니다!"],8:["역사가 만들어졌습니다!!!"]
@@ -432,7 +432,7 @@ const CALL = {
 const rnd = n => Math.floor(Math.random()*n);
 const pick = a => a[rnd(a.length)];
 function record(lv){
-  if(lv<=2){ const g=rnd(30), og=rnd(6)+(g?0:1); return `통산 ${g}골 ${og}자책골 · 뒤풀이 참석률 ${85+rnd(16)}%`; }
+  if(lv<=2){ const g=rnd(30)+1, a=rnd(20)+1; return `통산 ${g}골 ${a}도움 · 출석률 ${88+rnd(13)}% · 뒤풀이 참석률 100%`; }
   const base=[0,0,0,120,240,300,380,420,600][lv]; const m=base+rnd(base); const g=Math.round(m*(0.02+Math.random()*0.35)); const a=Math.round(m*(0.02+Math.random()*0.25));
   return `통산 ${m}경기 ${g}골 ${a}도움 · 경고 ${rnd(m/4|0)+1}장`;
 }
@@ -501,7 +501,7 @@ function roll(){
   const call = pick(CALL[t[2]]);
   const rec = record(t[2]);
   const peer = { c:pickWeighted(COUNTRIES,x=>x[2]), p:pickWeighted(POS,x=>x[2]), t:pickWeighted(pool(),x=>x[1]) };
-  const peerNote = peer.t[2]>t[2] ? "네, 동기가 더 잘됐습니다." : peer.t[2]<t[2] ? "동기는 더 못 갔습니다. 위안 삼으세요." : "동기도 똑같습니다. 친구 하세요.";
+  const peerNote = peer.t[2]>t[2] ? "동기는 더 멀리 갔지만, 더 많이 웃은 건 당신입니다." : peer.t[2]<t[2] ? "길은 달랐지만 둘 다 축구를 사랑합니다." : "동기도 똑같습니다. 평생 친구 확보.";
   return {c,p,t,f,height,number,debut,retire,story,nick,club,sig,after,call,rec,peer,peerNote,prob:t[1]/poolTotal(),cprob:c[2]/WORLD_K};
 }
 
